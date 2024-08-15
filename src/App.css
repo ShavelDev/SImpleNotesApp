@@ -96,7 +96,7 @@ footer{
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: right ease-in 0.5s;
+  transition: bottom ease-in 0.5s;
 }
 
 .FormBoxHider{
@@ -110,11 +110,11 @@ footer{
 }
 
 .FormBox-hidden{
-  right: -350px;
+  bottom: -350px;
 }
 
 .FormBox-displayed{
-  right: 0px;
+  bottom: 0px;
 }
 
 form{
@@ -125,3 +125,4 @@ form{
 
   background-color: white;
 }
+

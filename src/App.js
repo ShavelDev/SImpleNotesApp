@@ -4,10 +4,13 @@ import './App.css';
 
 
 
+
 function App() {
 
   const [notes, changeNotes] = useState([]);
   const [formHidden, setHidden] = useState(false);
+  const [inputTitle, setTitle] = useState("");
+  const [inputNoteContent, setNoteContent] = useState("");
 
   const addNote = () => {
 
@@ -21,6 +24,14 @@ function App() {
   const hideForm = () => {
     setHidden((prevValue => !formHidden))
     
+  }
+
+  const handleSumbit = (e) => {
+    e.preventDefault()
+
+    changeNotes( (prevNotes) => [...prevNotes, {title: inputTitle, noteContent: inputNoteContent}])
+    setTitle("")
+    setNoteContent("")
   }
 
   return (
@@ -37,7 +48,26 @@ function App() {
           <div className= 'FormBoxHider' onClick={hideForm}> 
           
           </div>
-          <form>
+          <form onSubmit={handleSumbit}>
+
+            <input type = "text"
+             value = {inputTitle} 
+             required
+             onChange= {(e) => setTitle(e.target.value)} />
+
+             <textarea
+              type = "text"
+              value={inputNoteContent}
+              required
+              onChange={(e)=> setNoteContent(e.target.value)}
+             
+             />
+
+             <button
+              type='submit'
+             >
+              Submit
+             </button>
             
           </form>
 
@@ -70,7 +100,7 @@ function Note(props){
   return(
     <div className='Note'>
       <p>{props.title}</p>  
-      <p>props.noteContent</p>
+      <p>{props.noteContent}</p>
     </div>
   );
 
