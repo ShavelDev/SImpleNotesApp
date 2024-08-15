@@ -7,6 +7,7 @@ import './App.css';
 function App() {
 
   const [notes, changeNotes] = useState([]);
+  const [formHidden, setHidden] = useState(false);
 
   const addNote = () => {
 
@@ -16,8 +17,10 @@ function App() {
 
   
 
-  const hideForm = () => {
 
+  const hideForm = () => {
+    setHidden((prevValue => !formHidden))
+    
   }
 
   return (
@@ -28,15 +31,18 @@ function App() {
       <div className='mainSection'>
 
 
-    <Notes notes = {notes}></Notes>
+        <Notes notes = {notes}></Notes>
 
-      <div className='formBox'>
-      <form>
-        
-      </form>
+        <div className = {`FormBox ${formHidden ? 'FormBox-hidden' : 'FormBox-displayed'}`}>
+          <div className= 'FormBoxHider' onClick={hideForm}> 
+          
+          </div>
+          <form>
+            
+          </form>
 
 
-      </div>
+        </div>
 
       </div>
       <footer>footer</footer>
